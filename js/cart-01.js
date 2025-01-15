@@ -1,3 +1,6 @@
+// Div внутри корзины, в который мы добавляем товары
+const cartWrapper = document.querySelector('.cart-wrapper');
+
 // Отслеживаем клик на странице
 window.addEventListener('click', function (event) {
 
@@ -44,5 +47,6 @@ window.addEventListener('click', function (event) {
 							</div>`;
 
         // Отобразим товар в корзине
+        cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
     }
 });
