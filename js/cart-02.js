@@ -26,38 +26,41 @@ window.addEventListener('click', function (event) {
 
         // Если товар есть в корзине
         if (itemInCart) {
+            const counterElement = itemInCart.querySelector('[data-counter]');
+            counterElement.innerText = parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+        } else {
+            // Если товара нет в корзине
 
+            // Собранные данные подставим в шаблон для товара в корзине
+            const cartItemHTML = `
+                <!-- Cart item -->
+                <div class="cart-item" data-id="${productInfo.id}">
+                    <div class="cart-item__top">
+                        <div class="cart-item__img">
+                            <img src="${productInfo.imgSrc}" alt="${productInfo.title}">
+                        </div>
+                        <div class="cart-item__desc">
+                            <div class="cart-item__title">${productInfo.title}</div>
+                            <div class="cart-item__weight">${productInfo.itemsInBox} / ${productInfo.weight}</div>
+
+                            <!-- cart-item__details -->
+                            <div class="cart-item__details">
+                                <div class="items items--small counter-wrapper">
+                                    <div class="items__control" data-action="minus">-</div>
+                                    <div class="items__current" data-counter="">${productInfo.counter}</div>
+                                    <div class="items__control" data-action="plus">+</div>
+                                </div>
+                                <div class="price">
+                                    <div class="price__currency">${productInfo.price}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Отобразим товар в корзине
+            cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
         }
-
-        // Собранные данные подставим в шаблон для товара в корзине
-        const cartItemHTML = `
-            <!-- Cart item -->
-            <div class="cart-item" data-id="${productInfo.id}">
-				<div class="cart-item__top">
-					<div class="cart-item__img">
-						<img src="${productInfo.imgSrc}" alt="${productInfo.title}">
-					</div>
-					<div class="cart-item__desc">
-						<div class="cart-item__title">${productInfo.title}</div>
-						<div class="cart-item__weight">${productInfo.itemsInBox} / ${productInfo.weight}</div>
-
-						<!-- cart-item__details -->
-						<div class="cart-item__details">
-							<div class="items items--small counter-wrapper">
-								<div class="items__control" data-action="minus">-</div>
-								<div class="items__current" data-counter="">${productInfo.counter}</div>
-								<div class="items__control" data-action="plus">+</div>
-							</div>
-							<div class="price">
-								<div class="price__currency">${productInfo.price}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        `;
-
-        // Отобразим товар в корзине
-        cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
     }
 });
