@@ -28,8 +28,9 @@ window.addEventListener('click', function (event) {
         if (itemInCart) {
             const counterElement = itemInCart.querySelector('[data-counter]');
             counterElement.innerText = parseInt(counterElement.innerText) + parseInt(productInfo.counter);
-        } else {
-            // Если товара нет в корзине
+        }
+        // Если товара нет в корзине
+        else {
 
             // Собранные данные подставим в шаблон для товара в корзине
             const cartItemHTML = `
@@ -65,5 +66,8 @@ window.addEventListener('click', function (event) {
 
         // Сбрасываем счетчик добавленного товара на "1"
         card.querySelector('[data-counter]').innerText = '1';
+
+        // Отображение статуса корзины
+        toggleCartStatus();
     }
 });
