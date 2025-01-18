@@ -10,7 +10,7 @@ function calcCartPrice() {
         const currentPrice = parseInt(amountEl.innerText) * parseInt(priceEl.innerText);
 
         totalPrice += currentPrice;
-
-        console.log(totalPrice);
     });
+
+    console.log(totalPrice);
 }
