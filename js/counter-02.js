@@ -34,4 +34,10 @@ window.addEventListener('click', function (event) {
             toggleCartStatus();
         }
     }
+
+    // Проверяем клик на + или - внутри корзины
+    if (event.target.hasAttribute('data-action') && event.target.closest('.cart-wrapper')) {
+        // Пересчет общей стоимости товаров в корзине
+        calcCartPrice();
+    }
 });
