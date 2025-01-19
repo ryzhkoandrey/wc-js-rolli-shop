@@ -1,13 +1,17 @@
 const productsContainer = document.querySelector('#products-container');
 
-async function getProducts() {
-    const response = await fetch('js/products.json');
-    const productsArray = await response.json();
+// Запускаем getProducts
+getProducts();
 
+// Асинхронная функция получения данных из файла products.json
+async function getProducts() {
+    // Получаем данные из products.json
+    const response = await fetch('js/products.json');
+    // Парсим данные из JSON формата в JS
+    const productsArray = await response.json();
+    // Запускаем ф-ю рендера (отображение товаров)
     renderProducts(productsArray);
 }
-
-getProducts();
 
 function renderProducts(productsArray) {
     productsArray.forEach(function (item) {
